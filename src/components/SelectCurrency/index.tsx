@@ -7,13 +7,12 @@ import { currencies } from './constant/currencies';
 const useStyles = makeStyles({
   select: {
     textAlign: 'left',
-    width: '6%'
+    width: '30%'
   }
 });
 
 const Select = (props: SelectProps) => {
   const classes = useStyles();
-
   return (
     <>
       <TextField
@@ -23,6 +22,7 @@ const Select = (props: SelectProps) => {
         onChange={props.handleChange}
         variant="outlined"
         className={classes.select}
+        name={props.name}
       >
         {currencies.map((option) => (
           <MenuItem key={option.value} value={option.value}>

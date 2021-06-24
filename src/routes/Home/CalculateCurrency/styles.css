@@ -1,0 +1,5 @@
+.origin {
+ display: flex;
+ justify-content: space-between;
+ width: 20%; 
+}
