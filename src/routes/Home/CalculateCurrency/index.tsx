@@ -54,8 +54,18 @@ const Home = () => {
         </div>
         <div className="space"/>
         <div className="right">
-          <InputAmount name="originAmount" value={value.originAmount} handleChange={handleChange} disabled={true} />
-          <InputAmount name="destinationAmount" value={value.destinationAmount} handleChange={handleChange} disabled={true} />
+          <InputAmount 
+            name="originAmount" 
+            value={value.originAmount} 
+            handleChange={handleChange} 
+            disabled={!!value.destinationAmount} 
+          />
+          <InputAmount 
+            name="destinationAmount" 
+            value={value.destinationAmount} 
+            handleChange={handleChange} 
+            disabled={!!value.originAmount} 
+          />
           <div className="info">
             <span>Fetched On: </span> 
             <span className="info-place-holder">date here</span>

@@ -37,6 +37,7 @@ const Input = (props: InputProps) => {
         }}
         variant="outlined"
         placeholder="formatted amount here"
+        disabled={props.disabled}
       />
     </>
   );
