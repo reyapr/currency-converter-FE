@@ -1,21 +1,21 @@
-import Currencies from '../../../constant/enums/currencies';
+import Currency from '../../../constant/enums/currencies';
 import { SelectOption } from '../SelectInterface';
 
 export const currencies: SelectOption[] = [
   {
-    value: Currencies.IDR,
-    label: Currencies.IDR,
+    value: Currency.IDR,
+    label: Currency.IDR,
   },
   {
-    value: Currencies.USD,
-    label: Currencies.USD,
+    value: Currency.USD,
+    label: Currency.USD,
   },
   {
-    value: Currencies.SGD,
-    label: Currencies.SGD,
+    value: Currency.SGD,
+    label: Currency.SGD,
   },
   {
-    value: Currencies.PHP,
-    label: Currencies.PHP,
+    value: Currency.PHP,
+    label: Currency.PHP,
   },
 ];

@@ -1,20 +1,19 @@
 import React from 'react';
 import SelectCurrency from '../../../components/SelectCurrency/index';
-import Currencies from '../../../constant/enums/currencies';
+import Currency from '../../../constant/enums/currencies';
 import InputAmount from '../../../components/InputAmount/index';
 import Button from '@material-ui/core/Button';
 import './styles.css'
 
 const Home = () => {
   const [value, setValue] = React.useState({
-    originCurrency: Currencies.IDR,
+    originCurrency: Currency.IDR,
     originAmount: '',
-    destinationCurrency: Currencies.USD,
+    destinationCurrency: Currency.USD,
     destinationAmount: ''
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.name)
     setValue({
       ...value,
       [event.target.name]: event.target.value,
