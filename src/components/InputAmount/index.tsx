@@ -4,13 +4,6 @@ import NumberFormat from 'react-number-format';
 import { InputProps, NumberFormatCustomProps } from './InputInterface';
 import { makeStyles } from '@material-ui/core/styles'
 
-const useStyles = makeStyles({
-  input: {
-    width: '65%'
-  }
-});
-
-
 const NumberFormatCustom = (props: NumberFormatCustomProps) => {
   const { onChange, ...other } = props;
 
@@ -32,7 +25,6 @@ const NumberFormatCustom = (props: NumberFormatCustomProps) => {
 }
 
 const Input = (props: InputProps) => {
-  const classes = useStyles()
   return (
     <>
       <TextField
@@ -45,7 +37,6 @@ const Input = (props: InputProps) => {
         }}
         variant="outlined"
         placeholder="formatted amount here"
-        className={classes.input}
       />
     </>
   );

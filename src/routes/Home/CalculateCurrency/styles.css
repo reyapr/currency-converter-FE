@@ -1,5 +1,62 @@
-.origin {
- display: flex;
- justify-content: space-between;
- width: 20%; 
+.currency-converter {
+  display: flex;
+  height: 30%; 
+  flex-direction: column;
 }
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 40%;
+  height: 100%; 
+}
+
+.title {
+  margin-bottom: 25px;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.left {
+ display: flex;
+ flex-direction: column;
+ flex: 8;
+ justify-content: space-between;
+}
+
+.mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 5;
+ }
+ 
+ .space {
+   display: flex;
+   flex: 1;
+ }
+ 
+ .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 16
+ }
+
+ .info {
+   height: 26px;
+ }
+
+ .info-place-holder {
+  font-weight: 100;
+  font-size: small; 
+ }
+ 
+ 
+.desc {
+  display: flex;
+  height: 56px;
+  align-items: center;
+}
+

@@ -6,8 +6,7 @@ import { currencies } from './constant/currencies';
 
 const useStyles = makeStyles({
   select: {
-    textAlign: 'left',
-    width: '30%'
+    textAlign: 'left'
   }
 });
 
