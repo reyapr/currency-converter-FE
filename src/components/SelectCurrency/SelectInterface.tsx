@@ -1,10 +1,10 @@
 import React from 'react'
-import Currency from '../../constant/enums/currencies';
+import Currency from '../../constant/enums/currency';
 
 export interface SelectProps {
   name: string,
   currency: Currency,
-  currencies: Currency
+  currencies: SelectOption[],
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 

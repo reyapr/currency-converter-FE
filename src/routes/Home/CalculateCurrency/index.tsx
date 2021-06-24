@@ -1,8 +1,10 @@
 import React from 'react';
 import SelectCurrency from '../../../components/SelectCurrency/index';
-import Currency from '../../../constant/enums/currencies';
+import Currency from '../../../constant/enums/currency';
 import InputAmount from '../../../components/InputAmount/index';
 import Button from '@material-ui/core/Button';
+import { currencies } from '../../../constant/currencies';
+
 import './styles.css'
 
 const Home = () => {
@@ -33,8 +35,18 @@ const Home = () => {
         </div>
         <div className="space"/>
         <div className="mid">
-          <SelectCurrency name="originCurrency" currency={value.originCurrency} handleChange={handleChange} />
-          <SelectCurrency name="destinationCurrency" currency={value.destinationCurrency} handleChange={handleChange} />
+          <SelectCurrency 
+            name="originCurrency" 
+            currency={value.originCurrency} 
+            handleChange={handleChange}
+            currencies={currencies.filter(currency => currency.value !== value.destinationCurrency)} 
+          />
+          <SelectCurrency 
+            name="destinationCurrency" 
+            currency={value.destinationCurrency} 
+            handleChange={handleChange} 
+            currencies={currencies.filter(currency => currency.value !== value.originCurrency)}
+          />
           <div className="info">
             <span>XE Rate: </span>
             <span className="info-place-holder">rate here</span>

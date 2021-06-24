@@ -2,7 +2,6 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core/styles'
 import { SelectProps } from './SelectInterface';
-import { currencies } from './constant/currencies';
 
 const useStyles = makeStyles({
   select: {
@@ -23,7 +22,7 @@ const Select = (props: SelectProps) => {
         className={classes.select}
         name={props.name}
       >
-        {currencies.map((option) => (
+        {props.currencies.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>

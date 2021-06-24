@@ -1,5 +1,5 @@
-import Currency from '../../../constant/enums/currencies';
-import { SelectOption } from '../SelectInterface';
+import Currency from './enums/currency';
+import { SelectOption } from '../components/SelectCurrency/SelectInterface';
 
 export const currencies: SelectOption[] = [
   {
