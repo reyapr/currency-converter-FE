@@ -30,7 +30,6 @@ const Input = (props: InputProps) => {
         value={props.value}
         onChange={props.handleChange}
         name={props.name}
-        id="formatted-numberformat-input"
         InputProps={{
           inputComponent: NumberFormatCustom as any,
         }}
