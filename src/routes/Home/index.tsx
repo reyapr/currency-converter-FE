@@ -1,11 +1,17 @@
 import React from 'react';
 import CalculateCurrency from './CalculateCurrency/index';
+import HistoricalRate from './HistoralRate/index';
 import './styles.css'
 
 const Home = () => {
   return (
     <div className="home">
-      <CalculateCurrency/>
+      <div className="home-calculate-currency">
+        <CalculateCurrency/>
+      </div>
+      <div className="home-historical-rate">
+        <HistoricalRate/>
+      </div>
     </div>
   )
 }

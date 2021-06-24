@@ -1,62 +1,75 @@
-.currency-converter {
+.historical-rate {
   display: flex;
   height: 100%; 
   flex-direction: column;
 }
 
-.content {
+.historical-rate-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.historical-rate-content-1 {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   width: 40%;
   height: 100%; 
 }
 
-.title {
+.historical-rate-content-2 {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 100%; 
+}
+
+
+.historical-rate-title {
   margin-bottom: 25px;
   font-weight: bold;
   font-size: 25px;
 }
 
-.left {
+.historical-rate-left {
  display: flex;
  flex-direction: column;
  flex: 8;
  justify-content: space-between;
 }
 
-.mid {
+.historical-rate-mid {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex: 5;
  }
- 
- .space {
+ .historical-rate-space {
    display: flex;
    flex: 1;
  }
  
- .right {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 16
- }
 
- .info {
+ .historical-rate-info {
    height: 26px;
  }
 
- .info-place-holder {
+ .historical-rate-info-place-holder {
   font-weight: 100;
   font-size: small; 
  }
  
  
-.desc {
+.historical-rate-desc {
   display: flex;
   height: 56px;
   align-items: center;
 }
+
+.historical-rate-right {
+  display: flex;
+  flex: 16
+ }
+
 
