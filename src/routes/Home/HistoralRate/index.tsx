@@ -1,11 +1,12 @@
 import React from 'react';
 import SelectCurrency from '../../../components/SelectCurrency/index';
 import Currency from '../../../constant/enums/currency';
-import InputAmount from '../../../components/InputAmount/index';
 import Button from '@material-ui/core/Button';
 import { currencies } from '../../../constant/currencies';
+import DateAndTimePickers from '../../../components/DateAndTimePickers';
 
 import './styles.css'
+import { Grid } from '@material-ui/core';
 
 const Home = () => {
   const [value, setValue] = React.useState({
@@ -14,12 +15,26 @@ const Home = () => {
     destinationCurrency: Currency.USD,
     destinationAmount: ''
   });
+  
+  const [date, setDate] = React.useState({
+    start: new Date(),
+    end: new Date()
+  })
+  
+  
+  const handleChangeDate = (value: Date, name: string) => {
+    setDate({
+      ...date,
+      [name] : value
+    })
+  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue({
       ...value,
       [event.target.name]: event.target.value,
     });
+    
   };
 
   return (
@@ -46,16 +61,25 @@ const Home = () => {
               currencies={currencies.filter(currency => currency.value !== value.originCurrency)}
             />
           </div>
-          <div className="historical-rate-space"/>
           <div className="historical-rate-right"/>
         </div>
         <div className="historical-rate-content-2">
-          <div>
+          <Grid container justify="space-between">
             <div className="historical-rate-desc">Time Range</div>
-          </div>
-          <div className="historical-rate-button">
-            <Button variant="outlined" color="primary">Calculate</Button>
-          </div>
+            <div className="historical-rate-space"/> 
+            <div className="historical-rate-date-from">
+              <DateAndTimePickers name="start" label="Start Date" value={date.start} handleChange={handleChangeDate}/>
+            </div>
+            <div className="historical-rate-date-to-text">
+              to
+            </div>
+            <div className="historical-rate-date-to">
+              <DateAndTimePickers name="end" label="End Date" value={date.end} handleChange={handleChangeDate}/>
+            </div>
+          </Grid>
+          <Grid>
+            <Button variant="outlined" color="primary">GET RATES</Button>
+          </Grid>
         </div>
       </div>
     </div>
