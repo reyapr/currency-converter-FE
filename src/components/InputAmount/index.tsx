@@ -2,7 +2,6 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import NumberFormat from 'react-number-format';
 import { InputProps, NumberFormatCustomProps } from './InputInterface';
-import { makeStyles } from '@material-ui/core/styles'
 
 const NumberFormatCustom = (props: NumberFormatCustomProps) => {
   const { onChange, ...other } = props;
