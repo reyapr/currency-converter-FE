@@ -4,16 +4,58 @@ import Currency from '../../../../constant/enums/currency';
 import InputAmount from '../../../../components/InputAmount/index';
 import Button from '@material-ui/core/Button';
 import { currencies } from '../../../../constant/currencies';
+import { DateAndTimeFormat } from '../../../../constant/date'
 
 import './styles.css'
+import { getCurrencies } from '../../../../outbound/currencies';
+import { CurrencyFormValue } from './CalculateCurrencyInterface';
+import { CurrencyRequestInterface } from '../../../../outbound/CurrenciesResponseInterface';
+import moment from 'moment';
+
+const formValue: CurrencyFormValue = {
+  originCurrency: Currency.IDR,
+  originAmount: '',
+  originFilledByFetch: false,
+  destinationCurrency: Currency.USD,
+  destinationAmount: '',
+  destinationFilledByFetch: false,
+  rate: null,
+  fetchedOn: ''
+}
+
+const constructCurrencyRequest = (formValue: CurrencyFormValue): CurrencyRequestInterface => {
+  if(formValue.originAmount) {
+    return {
+      from: formValue.originCurrency,
+      to: formValue.destinationCurrency,
+      amount: Number(formValue.originAmount)
+    }
+  }
+  
+  return {
+    from: formValue.destinationCurrency,
+    to: formValue.originCurrency,
+    amount: Number(formValue.destinationAmount)
+  }
+}
 
 const Home = () => {
-  const [value, setValue] = React.useState({
-    originCurrency: Currency.IDR,
-    originAmount: '',
-    destinationCurrency: Currency.USD,
-    destinationAmount: ''
-  });
+  const [value, setValue] = React.useState(formValue);
+  
+  const calculate = () => {
+    getCurrencies(constructCurrencyRequest(value))
+      .then(response => {
+        setValue({
+          ...value,
+          originCurrency: response.data.origin.currency,
+          originAmount: response.data.origin.amount,
+          destinationCurrency: response.data.destination.currency,
+          destinationAmount: response.data.destination.amount,
+          rate: response.data.rate.toFixed(11),
+          fetchedOn: moment(response.data.fetchTime).format(DateAndTimeFormat)
+        })
+      })
+  }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue({
@@ -30,7 +72,7 @@ const Home = () => {
           <div className="desc">Origin Amount</div>
           <div className="desc">Destination Amount</div>
           <div className="button">
-            <Button variant="outlined" color="primary">Calculate</Button>
+            <Button variant="outlined" color="primary" onClick={calculate}>Calculate</Button>
           </div>
         </div>
         <div className="space"/>
@@ -49,7 +91,7 @@ const Home = () => {
           />
           <div className="info">
             <span>XE Rate: </span>
-            <span className="info-place-holder">rate here</span>
+            <span className="info-place-holder">{value.rate || 'rate here'}</span>
           </div>
         </div>
         <div className="space"/>
@@ -68,7 +110,7 @@ const Home = () => {
           />
           <div className="info">
             <span>Fetched On: </span> 
-            <span className="info-place-holder">date here</span>
+            <span className="info-place-holder">{value.fetchedOn || 'date here' }</span>
           </div>
         </div>
       </div>

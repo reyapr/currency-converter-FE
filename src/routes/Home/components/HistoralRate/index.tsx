@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SelectCurrency from '../../../../components/SelectCurrency/index';
 import Currency from '../../../../constant/enums/currency';
 import Button from '@material-ui/core/Button';
@@ -12,9 +12,7 @@ import RatesTable from '../RatesTable';
 const Home = () => {
   const [value, setValue] = React.useState({
     originCurrency: Currency.IDR,
-    originAmount: '',
     destinationCurrency: Currency.USD,
-    destinationAmount: ''
   });
   
   const [date, setDate] = React.useState({
@@ -22,8 +20,12 @@ const Home = () => {
     end: new Date()
   })
   
-  const rows = [{timestamp: new Date(), rate: 6.4}, {timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4}]
   
+  const getRates = () => {
+  
+  }
+  
+  const rows = [{timestamp: new Date(), rate: 6.4}, {timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4}]
   
   const handleChangeDate = (value: Date, name: string) => {
     setDate({
@@ -81,7 +83,7 @@ const Home = () => {
             </div>
           </Grid>
           <Grid>
-            <Button variant="outlined" color="primary">GET RATES</Button>
+            <Button variant="outlined" color="primary" onClick={getRates}>GET RATES</Button>
           </Grid>
         </div>
         <div className="home-historical-rate-value">
