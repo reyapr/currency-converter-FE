@@ -15,14 +15,14 @@
   display: flex;
   flex-direction: row;
   width: 40%;
-  height: 45%; 
+  height: 35%; 
 }
 
 .historical-rate-content-2 {
   display: flex;
   flex-direction: column;
   width: 45%;
-  height: 40%; 
+  height: 25%; 
   justify-content: space-between;
 }
 
@@ -89,6 +89,11 @@
 .historical-rate-date-to {
   display: flex;
   flex: 12
+}
+
+.home-historical-rate-value {
+  height: 20%;
+  width: 40%;
 }
 
 

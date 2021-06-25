@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import moment from 'moment';
 import { DateAndTimePickersProps } from './DateAndTimePickersInterface';
+import { DateAndTimePickersFormat } from '../../constant/date';
 
 const useStyles = makeStyles({
     textField: {
@@ -26,7 +27,7 @@ const DateAndTimePickers = (props: DateAndTimePickersProps) => {
         InputLabelProps={{
           shrink: true,
         }}
-        value={moment(props.value).format('YYYY-MM-DDTHH:mm')}
+        value={moment(props.value).format(DateAndTimePickersFormat)}
         onChange={handleChangeToDate}
         variant="outlined"
         name={props.name}

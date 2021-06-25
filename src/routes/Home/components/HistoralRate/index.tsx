@@ -7,6 +7,7 @@ import DateAndTimePickers from '../../../../components/DateAndTimePickers';
 
 import './styles.css'
 import { Grid } from '@material-ui/core';
+import RatesTable from '../RatesTable';
 
 const Home = () => {
   const [value, setValue] = React.useState({
@@ -20,6 +21,8 @@ const Home = () => {
     start: new Date(),
     end: new Date()
   })
+  
+  const rows = [{timestamp: new Date(), rate: 6.4}, {timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4}]
   
   
   const handleChangeDate = (value: Date, name: string) => {
@@ -80,6 +83,9 @@ const Home = () => {
           <Grid>
             <Button variant="outlined" color="primary">GET RATES</Button>
           </Grid>
+        </div>
+        <div className="home-historical-rate-value">
+          <RatesTable rows={rows}/>
         </div>
       </div>
     </div>
