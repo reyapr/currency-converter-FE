@@ -28,7 +28,7 @@ const RatesTable = (props: RatesTableProps) => {
         <TableHead>
           <TableRow>
             <TableCell>Timestamp</TableCell>
-            <TableCell align="left">Calories</TableCell>
+            <TableCell align="left">Rate</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

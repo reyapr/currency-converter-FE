@@ -25,3 +25,17 @@ export interface CurrencyRequestInterface {
   to: Currency,
   amount: number
 }
+
+export interface RateRequestInterface {
+  origin: Currency,
+  destination: Currency,
+  startDate: number,
+  endDate: number
+}
+
+export interface ResponseRate {
+  originCurrency: Currency,
+  destinationCurrency: Currency,
+  rate: number,
+  createdAt: string
+}

@@ -1,13 +1,25 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SelectCurrency from '../../../../components/SelectCurrency/index';
 import Currency from '../../../../constant/enums/currency';
 import Button from '@material-ui/core/Button';
 import { currencies } from '../../../../constant/currencies';
 import DateAndTimePickers from '../../../../components/DateAndTimePickers';
+import { getRates } from '../../../../outbound/currencies';
 
 import './styles.css'
 import { Grid } from '@material-ui/core';
 import RatesTable from '../RatesTable';
+import { ResponseRate } from '../../../../outbound/CurrenciesResponseInterface';
+import moment from 'moment';
+import { DateAndTimeFormat } from '../../../../constant/date';
+
+
+const getEpochTime = (date: Date) => new Date(date).getTime() / 1000
+
+const constructRateTableRows = (responseRates: ResponseRate)  => ({
+  rate: responseRates.rate,
+  timestamp: moment(responseRates.createdAt).format(DateAndTimeFormat)
+})
 
 const Home = () => {
   const [value, setValue] = React.useState({
@@ -20,12 +32,26 @@ const Home = () => {
     end: new Date()
   })
   
+  const [rows, setRows] = React.useState([])
+  const [errMessage, setErrMessage] = React.useState('')
   
-  const getRates = () => {
-  
+  const getCurrencyRates = () => {
+    getRates({ 
+      origin: value.originCurrency, 
+      destination: value.destinationCurrency,
+      startDate: getEpochTime(date.start),
+      endDate: getEpochTime(date.end)
+     })
+     .then(response => {
+       setRows(response.data.map((responseRate: ResponseRate) => constructRateTableRows(responseRate)))
+     })
+     .catch(err => {
+       if(err.code === 400) {
+         setErrMessage(err.response.data.message)
+       }
+     })
   }
   
-  const rows = [{timestamp: new Date(), rate: 6.4}, {timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4},{timestamp: new Date(), rate: 6.4}]
   
   const handleChangeDate = (value: Date, name: string) => {
     setDate({
@@ -83,7 +109,7 @@ const Home = () => {
             </div>
           </Grid>
           <Grid>
-            <Button variant="outlined" color="primary" onClick={getRates}>GET RATES</Button>
+            <Button variant="outlined" color="primary" onClick={getCurrencyRates}>GET RATES</Button>
           </Grid>
         </div>
         <div className="home-historical-rate-value">
