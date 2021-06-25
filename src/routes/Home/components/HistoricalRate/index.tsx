@@ -12,6 +12,7 @@ import RatesTable from '../RatesTable';
 import { ResponseRate } from '../../../../outbound/CurrenciesResponseInterface';
 import moment from 'moment';
 import { DateAndTimeFormat } from '../../../../constant/date';
+import { HistoricalProps } from './HistoralRateInterface';
 
 
 const getEpochTime = (date: Date) => new Date(date).getTime() / 1000
@@ -21,7 +22,7 @@ const constructRateTableRows = (responseRates: ResponseRate)  => ({
   timestamp: moment(responseRates.createdAt).format(DateAndTimeFormat)
 })
 
-const HistoricalRate = () => {
+const HistoricalRate = (props: HistoricalProps) => {
   const [value, setValue] = React.useState({
     originCurrency: Currency.IDR,
     destinationCurrency: Currency.USD,
@@ -33,7 +34,6 @@ const HistoricalRate = () => {
   })
   
   const [rows, setRows] = React.useState([])
-  const [errMessage, setErrMessage] = React.useState('')
   
   const getCurrencyRates = () => {
     getRates({ 
@@ -46,8 +46,11 @@ const HistoricalRate = () => {
        setRows(response.data.map((responseRate: ResponseRate) => constructRateTableRows(responseRate)))
      })
      .catch(err => {
-       if(err.code === 400) {
-         setErrMessage(err.response.data.message)
+       if(err.response.status === 400) {
+         props.setPopup({
+          open: true,
+          message: err.response.data.message 
+         })
        }
      })
   }
