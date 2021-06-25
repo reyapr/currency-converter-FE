@@ -21,7 +21,7 @@ const constructRateTableRows = (responseRates: ResponseRate)  => ({
   timestamp: moment(responseRates.createdAt).format(DateAndTimeFormat)
 })
 
-const Home = () => {
+const HistoricalRate = () => {
   const [value, setValue] = React.useState({
     originCurrency: Currency.IDR,
     destinationCurrency: Currency.USD,
@@ -120,4 +120,4 @@ const Home = () => {
   )
 }
 
-export default Home;
+export default HistoricalRate;
