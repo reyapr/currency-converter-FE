@@ -1,9 +1,9 @@
 import React from 'react';
-import SelectCurrency from '../../../components/SelectCurrency/index';
-import Currency from '../../../constant/enums/currency';
+import SelectCurrency from '../../../../components/SelectCurrency/index';
+import Currency from '../../../../constant/enums/currency';
 import Button from '@material-ui/core/Button';
-import { currencies } from '../../../constant/currencies';
-import DateAndTimePickers from '../../../components/DateAndTimePickers';
+import { currencies } from '../../../../constant/currencies';
+import DateAndTimePickers from '../../../../components/DateAndTimePickers';
 
 import './styles.css'
 import { Grid } from '@material-ui/core';

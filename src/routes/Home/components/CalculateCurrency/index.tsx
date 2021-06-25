@@ -1,9 +1,9 @@
 import React from 'react';
-import SelectCurrency from '../../../components/SelectCurrency/index';
-import Currency from '../../../constant/enums/currency';
-import InputAmount from '../../../components/InputAmount/index';
+import SelectCurrency from '../../../../components/SelectCurrency/index';
+import Currency from '../../../../constant/enums/currency';
+import InputAmount from '../../../../components/InputAmount/index';
 import Button from '@material-ui/core/Button';
-import { currencies } from '../../../constant/currencies';
+import { currencies } from '../../../../constant/currencies';
 
 import './styles.css'
 

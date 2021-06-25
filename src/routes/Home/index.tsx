@@ -1,6 +1,6 @@
 import React from 'react';
-import CalculateCurrency from './CalculateCurrency/index';
-import HistoricalRate from './HistoralRate/index';
+import CalculateCurrency from './components/CalculateCurrency/index';
+import HistoricalRate from './components/HistoralRate/index';
 import './styles.css'
 
 const Home = () => {
