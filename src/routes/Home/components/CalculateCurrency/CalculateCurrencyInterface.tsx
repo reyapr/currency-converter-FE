@@ -7,6 +7,7 @@ export interface CurrencyFormValue {
   destinationAmount: string,
   rate: number | null,
   fetchedOn: string,
-  originFilledByFetch: boolean,
-  destinationFilledByFetch: boolean
+  originIsDisabled: boolean,
+  destinationisDisabled: boolean,
+  fetched: boolean
 }
